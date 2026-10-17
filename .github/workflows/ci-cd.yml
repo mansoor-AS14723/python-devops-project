@@ -33,11 +33,8 @@ jobs:
       - name: Install dependencies
         run: python -m pip install -r requirements-dev.txt
 
-      - name: Run unit tests
-        run: python -m pytest tests/unit/ -v
-
-      - name: Run integration tests
-        run: python -m pytest tests/integration/ -v
+      - name: Run tests with coverage
+        run: python -m pytest tests/ -v --cov=app --cov-report=xml:coverage.xml
 
       - name: Run SonarQube analysis
         uses: SonarSource/sonarqube-scan-action@v5
